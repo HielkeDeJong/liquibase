@@ -3,9 +3,9 @@ package liquibase.database.core;
 import junit.framework.TestCase;
 import liquibase.database.Database;
 
-public class DB2DatabaseTest extends TestCase {
+public class DB2LUWDatabaseTest extends TestCase {
     public void testGetDefaultDriver() {
-        Database database = new DB2Database();
+        Database database = new DB2LUWDatabase();
 
         assertEquals("com.ibm.db2.jcc.DB2Driver", database.getDefaultDriver("jdbc:db2://localhost:50000/liquibas"));
 

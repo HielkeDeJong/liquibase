@@ -127,11 +127,7 @@ public class UniqueConstraintSnapshotGenerator extends JdbcSnapshotGenerator {
         } else if (database instanceof OracleDatabase) {
             sql = "select ucc.column_name from all_cons_columns ucc where ucc.constraint_name='"+database.correctObjectName(name, UniqueConstraint.class)+"' and ucc.owner='"+database.correctObjectName(schema.getCatalogName(), Catalog.class)+"' order by ucc.position";
         } else if (database instanceof DB2Database) {
-            sql = "select k.colname as column_name from syscat.keycoluse k, syscat.tabconst t " +
-                    "where k.constname = t.constname " +
-                    "and t.type='U' " +
-                    "and k.constname='"+database.correctObjectName(name, UniqueConstraint.class)+"' "+
-                    "order by colseq";
+        	sql =  ((DB2Database)database).getUniqueConstraintColumnListSql(name);
         } else if (database instanceof DerbyDatabase) {
             sql = "SELECT cg.descriptor as descriptor, t.tablename " +
                     "FROM sys.sysconglomerates cg "+

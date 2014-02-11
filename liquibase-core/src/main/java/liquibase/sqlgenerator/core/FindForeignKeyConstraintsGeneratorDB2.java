@@ -10,7 +10,7 @@ import liquibase.sqlgenerator.SqlGeneratorChain;
 import liquibase.statement.core.FindForeignKeyConstraintsStatement;
 
 public class FindForeignKeyConstraintsGeneratorDB2 extends AbstractSqlGenerator<FindForeignKeyConstraintsStatement> {
-    @Override
+	@Override
     public int getPriority() {
         return PRIORITY_DATABASE;
     }
