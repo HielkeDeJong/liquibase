@@ -1,10 +1,23 @@
 package liquibase.database.core;
 
+import liquibase.database.Database;
 import liquibase.structure.core.Catalog;
+import liquibase.structure.core.Schema;
 import liquibase.structure.core.Table;
 import liquibase.structure.core.UniqueConstraint;
+import liquibase.structure.core.View;
 
-public class DB2LUWDatabase extends DB2Database {
+public class DB2LUWDatabase extends DB2Database implements Database {
+
+	@Override
+	protected String getDefaultDatabaseProductName() {
+		return "DB2 LUW";
+	}
+
+	@Override
+	public String getShortName() {
+		return "db2";
+	}
 
 	@Override
 	public String getDB2ProductTypeTestSql() {
@@ -34,6 +47,13 @@ public class DB2LUWDatabase extends DB2Database {
 		return String
 				.format("SELECT K.COLNAME AS COLUMN_NAME FROM SYSCAT.KEYCOLUSE K, SYSCAT.TABCONST T WHERE K.CONSTNAME = T.CONSTNAME AND T.TYPE='U' AND T.CONSTNAME = '%s' ORDER BY K.COLSEQ",
 						correctObjectName(constraintName, UniqueConstraint.class));
+	}
+
+	@Override
+	public String getViewDefinitionSql(String schemaName, String viewName) {
+		return String.format(
+				"SELECT TEXT AS VIEW_DEFINITION FROM SYSCAT.VIEWS WHERE VIEWSCHEMA = '%S' and VIEWNAME = '%S'",
+				correctObjectName(schemaName, Schema.class), correctObjectName(viewName, View.class));
 	}
 
 }

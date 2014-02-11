@@ -433,7 +433,7 @@ public class JdbcDatabaseSnapshot extends DatabaseSnapshot {
                             sql += " and uc.table_name = '" + database.correctObjectName(tableName, Table.class) + "'";
                         }
                     } else if (database instanceof DB2Database) {
-                    	sql =  ((DB2Database)database).getUniqueConstraintListSql(catalogName, tableName);
+                    	sql =  ((DB2Database)database).getUniqueConstraintListSql(schemaName, tableName);
                     } else if (database instanceof FirebirdDatabase) {
                         sql = "SELECT RDB$INDICES.RDB$INDEX_NAME AS CONSTRAINT_NAME, RDB$INDICES.RDB$RELATION_NAME AS TABLE_NAME FROM RDB$INDICES " +
                                 "LEFT JOIN RDB$RELATION_CONSTRAINTS ON RDB$RELATION_CONSTRAINTS.RDB$INDEX_NAME = RDB$INDICES.RDB$INDEX_NAME " +

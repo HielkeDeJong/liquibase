@@ -70,16 +70,6 @@ public abstract class DB2Database extends AbstractJdbcDatabase {
 	}
 
 	@Override
-	protected String getDefaultDatabaseProductName() {
-		return "DB2";
-	}
-
-	@Override
-	public String getShortName() {
-		return "db2";
-	}
-
-	@Override
 	public String getDefaultCatalogName() {
 
 		if (defaultCatalogName != null) {
@@ -245,14 +235,16 @@ public abstract class DB2Database extends AbstractJdbcDatabase {
 	}
 
 	// DB2 LUW and z/OS separation
+	public abstract String getDB2ProductTypeTestSql();
+	
 	public abstract String getSelectSequenceSql(String catalogName);
 
 	public abstract String getUniqueConstraintListSql(String catalogName, String tableName);
 
 	public abstract String getUniqueConstraintColumnListSql(String constraintName);
 
-	public abstract String getDB2ProductTypeTestSql();
-	
+	public abstract String getViewDefinitionSql(String schemaName, String viewName);
+
 	protected boolean isCorrectDB2ProductType(DatabaseConnection conn) {
 		String sql = getDB2ProductTypeTestSql();
 		Statement stmt = null;
