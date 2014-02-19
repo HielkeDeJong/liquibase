@@ -30,7 +30,6 @@ public class TimeType  extends LiquibaseDataType {
                 //assume greater than sql 2008 and TIME will work
             }
         }
-
         if (database instanceof MySQLDatabase) {
             boolean supportsParameters = true;
             try {

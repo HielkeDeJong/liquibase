@@ -210,7 +210,7 @@ public class ColumnConfigTest {
 
         Date today = new Date();
         assertEquals(today, new ColumnConfig().setValueDate(today).getValueDate());
-        assertEquals("1992-02-11 13:22:44.006", new ColumnConfig().setValueDate("1992-02-11T13:22:44.6").getValueDate().toString());
+        assertEquals("1992-02-11 13:22:44.006", new ColumnConfig().setValueDate("1992-02-11T13:22:44.006").getValueDate().toString());
         assertEquals("1992-02-12", new ColumnConfig().setValueDate("1992-02-12").getValueDate().toString());
 
         assertEquals("date_func", new ColumnConfig().setValueDate("date_func").getValueComputed().toString());
@@ -277,7 +277,7 @@ public class ColumnConfigTest {
 
         Date today = new Date();
         assertEquals(today, new ColumnConfig().setDefaultValueDate(today).getDefaultValueDate());
-        assertEquals("1992-02-11 13:22:44.006", new ColumnConfig().setDefaultValueDate("1992-02-11T13:22:44.6").getDefaultValueDate().toString());
+        assertEquals("1992-02-11 13:22:44.006", new ColumnConfig().setDefaultValueDate("1992-02-11T13:22:44.006").getDefaultValueDate().toString());
         assertEquals("1992-02-12", new ColumnConfig().setDefaultValueDate("1992-02-12").getDefaultValueDate().toString());
 
         assertEquals("date_func", new ColumnConfig().setDefaultValueDate("date_func").getDefaultValueComputed().toString());
