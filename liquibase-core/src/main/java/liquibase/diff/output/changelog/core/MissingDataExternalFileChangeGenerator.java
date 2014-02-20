@@ -2,7 +2,8 @@ package liquibase.diff.output.changelog.core;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -83,7 +84,8 @@ public class MissingDataExternalFileChangeGenerator extends MissingDataChangeGen
 				throw new RuntimeException(parentDir + " is not a directory");
 			}
 
-			CSVWriter outputFile = new CSVWriter(new BufferedWriter(new FileWriter(fileName)));
+			CSVWriter outputFile = new CSVWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
+					fileName), "UTF-8")));
 			String[] dataTypes = new String[columnNames.size()];
 			String[] line = new String[columnNames.size()];
 			for (int i = 0; i < columnNames.size(); i++) {
