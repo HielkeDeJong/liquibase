@@ -21,7 +21,8 @@ public class DB2ZOSDatabase extends DB2Database implements Database {
 
 	@Override
 	public String getDB2ProductTypeTestSql() {
-		return "SELECT COUNT(*) FROM SYSIBM.SYSTABLES";
+		//return "SELECT COUNT(*) FROM SYSIBM.SYSTABLES";
+		return "SELECT COUNT(*) FROM SYSIBM.SYSKEYCOLUSE K, SYSIBM.SYSTABCONST T WHERE K.CONSTNAME = T.CONSTNAME";
 	}
 
 	@Override
